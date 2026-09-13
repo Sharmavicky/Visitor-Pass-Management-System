@@ -4,7 +4,7 @@ import {
     ShieldCheck,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import error404 from "../../assets/Error404.png";
+import error404 from "../../../assets/Error404.png";
 
 export default function NotFound(){
     return (

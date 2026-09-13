@@ -4,7 +4,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import unauthorizedImage from "../../assets/Unauthorized.png";
+import unauthorizedImage from "../../../assets/Unauthorized.png";
 
 export default function Unauthorized() {
     return (
