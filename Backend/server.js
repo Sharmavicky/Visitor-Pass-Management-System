@@ -9,6 +9,8 @@ const cors = require("cors");
 const connectDB = require("./Config/dbConnection");
 const authRoutes = require("./Routes/authRoutes");
 const visitorRoutes = require("./Routes/visitorRoutes");
+const passRoutes = require("./Routes/passRoutes");
+const appointmentRoutes = require("./Routes/appointmentRoutes");
 
 
 connectDB();
@@ -28,6 +30,8 @@ app.get("/api/health", (req, res) => {
 // Routes
 app.use("/api/auth", authRoutes);           // Authentication routes
 app.use("/api/visitors", visitorRoutes);    // Visitor management routes
+app.use("/api/passes", passRoutes);
+app.use("/api/appointments", appointmentRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
