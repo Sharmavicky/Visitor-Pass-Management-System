@@ -124,4 +124,33 @@ const getMe = async (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, getMe };
+// @route GET /api/auth/forget-password
+const forgetPassword = async (req, res) => {
+    const { email, phone } = req.body;
+
+    try {
+        // Check if user exists
+        const user = await User.findOne({ email, phone });
+
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                message: "Account with this email or phone number does not exist"
+            })
+        }
+
+        // If user exists, return an OTP to the user entered email or phone number.
+        return res.status(200).json({
+            success: true,
+            message: "OTP sent successfully to your email or phone number",
+            otp: "123456" // For now, we are returning a hardcoded OTP. In a real application, you would generate a random OTP and send it to the user's email or phone number.
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message || "Server error. Please try again later."
+        })
+    }
+}
+
+module.exports = { registerUser, loginUser, getMe, forgetPassword };
