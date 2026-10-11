@@ -38,7 +38,7 @@ const visitorSchema = new mongoose.Schema({
     },
     host: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Host",
         required: [true, "Host employee is required"]
     },
     createdBy: {
