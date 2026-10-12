@@ -33,12 +33,12 @@ const generateQRCode = async (qrToken, options = {}) => {
             dataUri: `data:image/png;base64,${qrBuffer.toString("base64")}`,
         }
     } catch (error) {
-            // Log everything about the error
-            console.error("QR raw error:", error);
-            console.error("QR error type:", typeof error);
-            console.error("QR error message:", error?.message);
-            console.error("QR error string:", String(error));
-            throw new Error(`QR code generation failed: ${error?.message || String(error)}`);
+        // Log everything about the error
+        console.error("QR raw error:", error);
+        console.error("QR error type:", typeof error);
+        console.error("QR error message:", error?.message);
+        console.error("QR error string:", String(error));
+        throw new Error(`QR code generation failed: ${error?.message || String(error)}`);
     }
 };
 
