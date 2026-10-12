@@ -49,7 +49,7 @@ const passSchema = new mongoose.Schema({
     // Pass lifecycle status: active, expired, revoked
     status: {
         type: String,
-        enum: ["active", "expired", "revoked"],
+        enum: ["active", "used", "expired", "revoked"],
         default: "active"
     },
 

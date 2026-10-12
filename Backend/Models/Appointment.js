@@ -8,7 +8,7 @@ const appointmentSchema = new mongoose.Schema({
     },
     host: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Host",
+        ref: "User",
         required: [true, "Host is required"]
     },
     scheduledAt: {
