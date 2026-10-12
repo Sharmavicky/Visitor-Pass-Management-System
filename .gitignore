@@ -2,3 +2,5 @@
 *.json
 *.log
 node_modules/
+*.pdf
+.gitignore
