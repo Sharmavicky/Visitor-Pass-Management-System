@@ -1,4 +1,6 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -33,6 +35,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+    department: {
+        type: String,
+        default: ""
+    },
+    company: {
+        type: String,
+        default: ""
+    },
+    jobTitle: {
+        type: String,
+        default: ""
+    },
+    baseLocation: {
+        type: String,
+        default: ""
+    },
     isActive: {
         type: Boolean,
         default: true
@@ -40,5 +58,16 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+// pre-save hook for automatically password hashing
+userSchema.pre("save", async function () {
+    if (!this.isModified("password")) return;
+    const salt = await bcrypt.genSalt(Number(process.env.SALT));
+    this.password = await bcrypt.hash(this.password, salt);
+});
+
+userSchema.methods.matchPassword = async function (enteredPassword) {
+    return bcrypt.compare(enteredPassword, this.password);
+}
 
 module.exports = mongoose.model("User", userSchema);

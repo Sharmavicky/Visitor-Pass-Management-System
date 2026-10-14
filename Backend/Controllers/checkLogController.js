@@ -274,6 +274,11 @@ const getActiveVisitors = async (req, res) => {
 
             // No checkout found — visitor is still on premises
             if (!checkOut) {
+                if (log.pass && new Date() > new Date(log.pass.validUntil)) {
+                    await Pass.findByIdAndUpdate(log.pass._id, { status: "expired" });
+                    continue;
+                }
+                
                 // Calculate how long they've been in
                 const durationMs = new Date() - new Date(log.timestamp);
                 const durationMinutes = Math.floor(durationMs / 60000);
