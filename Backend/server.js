@@ -13,6 +13,7 @@ const passRoutes = require("./Routes/passRoutes");
 const appointmentRoutes = require("./Routes/appointmentRoutes");
 const checkLogsRoutes = require("./Routes/checkLogsRoutes");
 const userRoutes = require("./Routes/userRoutes");
+const reportRoutes = require("./Routes/reportSummaryRoutes");
 
 
 connectDB();
@@ -36,6 +37,7 @@ app.use("/api/passes", passRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/checklogs", checkLogsRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/report", reportRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
